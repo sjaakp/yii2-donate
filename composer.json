@@ -1,0 +1,23 @@
+{
+    "name": "sjaakp/yii2-donate",
+    "description": "Donate form for Yii2, uses Mollie.",
+    "keywords": ["yii", "yii2", "extension", "widget", "donate", "Mollie"],
+    "type": "yii2-extension",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sjaak Priester",
+            "email": "sjaak@sjaakpriester.nl",
+            "homepage": "https://sjaakpriester.nl"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "mollie/mollie-api-php": ">=2.0"
+      },
+    "autoload": {
+        "psr-4": {
+            "sjaakp\\donate\\": ""
+        }
+    }
+}
