@@ -24,6 +24,7 @@ class m000000_000000_init extends Migration
             'message' => $this->text()->null(),
             'page' => $this->string(40)->null(),
             'mollie' => $this->string(30)->null(),
+            'status' => $this->string(12)->null(),
             'donated_at' => $this->dateTime()->null(),
         ], $tableOptions);
 

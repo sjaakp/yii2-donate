@@ -39,6 +39,7 @@ return [
     'Resume' => 'Ga verder',
     'Say something friendly' => 'Zeg iets aardigs',
     'Send an email' => 'Stuur een e-mail',
+    'Status' => 'Status',
     'Thank you for your {amount} donation of {date}.' => 'Bedankt voor je donatie van {amount} op {date}.',
     'Thanks' => 'Bedankt',
     'The requested donation does not exist.' => 'De opgevraagde donatie bestaat niet.',

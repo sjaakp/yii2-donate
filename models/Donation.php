@@ -31,6 +31,7 @@ use yii\db\Expression;
  * @property string|null $page
  * @property string|null $mollie
  * @property string|null $donated_at
+ * @property string|null $status
  */
 class Donation extends ActiveRecord
 {
@@ -63,7 +64,7 @@ class Donation extends ActiveRecord
             [['amount'], 'required'],
             [['amount'], 'number'],
             [['message'], 'string'],
-            [['donated_at'], 'safe'],
+            [['donated_at', 'status'], 'safe'],
             [['email', 'page'], 'string', 'max' => 80],
             [['email'], 'email'],
             [['mollie'], 'string', 'max' => 30],
@@ -83,6 +84,7 @@ class Donation extends ActiveRecord
             'donated_at' => Yii::t('donate', 'Donated At'),
             'page' => Yii::t('donate', 'Page'),
             'mollie' => Yii::t('donate', 'Mollie payment ID'),
+            'status' => Yii::t('donate', 'Status'),
         ];
     }
 

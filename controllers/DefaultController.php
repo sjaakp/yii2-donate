@@ -61,11 +61,11 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Donation::find()
+            'query' => Donation::find()->where([ 'status' => 'paid' ])
                 ->orderBy([ 'donated_at' => SORT_DESC ]),
             'sort' => false
         ]);
-        $total = Donation::find()->sum('amount');
+        $total = Donation::find()->where([ 'status' => 'paid' ])->sum('amount');
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,
@@ -109,8 +109,7 @@ class DefaultController extends Controller
 
     public function actionDummy($mollie)
     {
-        $payments = $this->setupMolliePayments();
-        $payment = $payments->get($mollie);
+        $payment = $this->setupMolliePayments()->get($mollie);
 
         return $this->render('dummy', [
             'module' => $this->module,
@@ -121,6 +120,9 @@ class DefaultController extends Controller
     public function actionThanks($id)
     {
         $model = $this->findModel($id);
+        $payment = $this->setupMolliePayments()->get($model->mollie);
+        $model->updateAttributes([ 'status' => $payment->status ]);
+
         $model->sendEmail(Yii::t('donate', 'Thanks'), 'thanks', $this->module->mailOptions);
         return $this->render('thanks', [
             'model' => $model,
