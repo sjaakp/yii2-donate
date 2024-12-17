@@ -223,3 +223,25 @@ another module or application component), you may set the Module
 ID to something different. **Important:** in that case, the `moduleId` 
 property of the **Donate** widget must be set to
 this new value as well.
+
+### FAQ ###
+
+**Can I change the layout for the **Yii2-donate** views?**
+- Use the [`EVENT_BEFORE_ACTION` event](https://www.yiiframework.com/doc/api/2.0/yii-base-controller#EVENT_BEFORE_ACTION-detail "Yii").
+One easy way is to incorporate it in the module setup, like so:
+
+      <?php
+      // ...
+      'modules' => [
+         'donate' => [
+             'class' => sjaakp\donate\Module::class,
+             'description' => 'Please, buy me a drink!',
+             'on beforeAction' => function ($event) {
+                 $event->sender->layout = '@app/views/layouts/one_column';
+             },
+             // ... more options ...
+         ],
+      ],
+      // ...
+
+
